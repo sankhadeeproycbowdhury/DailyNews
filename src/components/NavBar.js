@@ -1,5 +1,7 @@
 // import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import '/home/sankha/Dev/React/newsapp/src/App.css'
+
 
 export class NavBar extends Component {
 //   static propTypes = {second: third}
@@ -7,8 +9,8 @@ export class NavBar extends Component {
   render() {
     return (
     <div>
+    <nav className="navbar navbar-expand-lg  bg-dark navbar-dark">
 
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">DailyNews</a>
         <button
@@ -30,12 +32,11 @@ export class NavBar extends Component {
             <li className="nav-item">
               <a className="nav-link" href="/">About</a>
             </li>
-           
           </ul>
         </div>
       </div>
-    </nav>
 
+    </nav>
     </div>
     )
   }
