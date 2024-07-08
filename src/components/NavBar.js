@@ -1,6 +1,6 @@
-// import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import '/home/sankha/Dev/React/newsapp/src/App.css'
+import { Link } from 'react-router-dom'
 
 
 export class NavBar extends Component {
@@ -12,7 +12,7 @@ export class NavBar extends Component {
     <nav className="navbar navbar-expand-lg  bg-dark navbar-dark">
 
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">DailyNews</a>
+        <Link className="navbar-brand" to="/">DailyNews</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,12 +27,28 @@ export class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
+              <Link className="nav-link active" aria-current="page" to="/general">General</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">About</a>
+              <Link className="nav-link active" aria-current="page" to="/business">Business</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/entertainment">Entertainment</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/health">Health</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/science">Science</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/sports">Sports</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/technology">Technology</Link>
+            </li>  
           </ul>
+          
         </div>
       </div>
 
