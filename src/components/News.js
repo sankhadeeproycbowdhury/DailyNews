@@ -71,12 +71,13 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h1 style={{ textAlign: 'center', margin:'30px'}}>DailyNews - Top HeadLines</h1>
+        <h1 style={{ textAlign: 'center', margin:'30px', padding:'30px'}}>DailyNews - Top HeadLines</h1>
         {this.state.loading && <Spinner style={{ hight : '100vh',  }} />}
         <div className='row'>
           {!this.state.loading && this.state.articles.map((element) => {
             return <div className='col-md-4' key={element.url} >
-              <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 90) : ""} imageUrl={element.urlToImage} newsUrl={element.url} />
+              <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 90) : ""}
+               imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date = {element.publishedAt} source = {element.source.name}/>
             </div>
           })}
         </div>
