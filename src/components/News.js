@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
-import Spinner from './Spinner';
+// import Spinner from './Spinner';
 import PropTypes from 'prop-types'
 
 
@@ -19,17 +19,22 @@ export class News extends Component {
     type : PropTypes.string,
   }
 
-  constructor() {
-    super();
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
       totalResults : 0,
     }
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - DailyNews App`;
   }
 
-
+   
   async updateNews(){
     let url = null;
     if( this.props.type !== " "){
@@ -65,11 +70,11 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h1 style={{ textAlign: 'center', margin:'30px', padding:'30px'}}>DailyNews - Top HeadLines</h1>
-        {this.state.loading && <Spinner style={{ hight : '100vh',  }} />}
+        <h1 style={{ textAlign: 'center', margin:'30px', padding:'30px'}}>DailyNews - Top {this.capitalizeFirstLetter(this.props.category)} HeadLines</h1>
+        {/* {this.state.loading && <Spinner style={{ hight : '100vh',  }} />} */}
         <div className='row'>
-          
-          {!this.state.loading &&  (this.state.articles ? (this.state.articles.map((element) => {
+        {/* !this.state.loading &&   */}
+          {(this.state.articles ? (this.state.articles.map((element) => {
             return <div className='col-md-4' key={element.url} >
               <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 90) : ""}
                imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date = {element.publishedAt} source = {element.source.name}/>
@@ -79,6 +84,7 @@ export class News extends Component {
         </div>
         <div className='container my-2 d-flex justify-content-between'>
           <button disabled={this.state.page <= 1} type="button" className="btn btn-info mx-2" onClick={this.handlePrevClick} >&larr; Previous</button>
+          <span> {this.state.page} / {Math.ceil(this.state.totalResults/this.props.pageSize)} </span>
           <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-info mx-2" onClick={this.handleNextClick} >Next &rarr;</button>
         </div>
       </div>

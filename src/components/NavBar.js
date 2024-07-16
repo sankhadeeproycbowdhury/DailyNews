@@ -10,7 +10,6 @@ export class NavBar extends Component {
   
   handleChange = (event) => {
     this.props.onValueChange(event.target.value);
-    
   };
 
   render() {  

@@ -34,7 +34,8 @@ export default class App extends Component {
           <Route exact path="/science" element={<News pageSize = {this.pageSize} category = "science" key="science"  />} />
           <Route exact path="/sports" element={<News pageSize = {this.pageSize} category = "sports" key="sports" />} />
           <Route exact path="/technology" element={<News pageSize = {this.pageSize} category = "technology" key="technology" />} />
-          <Route exact path="/search" element={<News pageSize = {this.pageSize} type = {this.state.sharedValue} key={this.state.sharedValue}/>} />
+          <Route exact path="/search" element={<News pageSize = {this.pageSize} type = {this.state.sharedValue}
+           key={this.state.sharedValue}  category =  {this.state.sharedValue}/>} />
           </Routes>
         </Router>
       </div>
