@@ -66,24 +66,24 @@ export class News extends Component {
     this.updateNews();
   }
 
-  handlePrevClick = async () => {
-    this.setState({ page: this.state.page - 1 });
-    this.updateNews();
-  }
+  // handlePrevClick = async () => {
+  //   this.setState({ page: this.state.page - 1 });
+  //   this.updateNews();
+  // }
 
-  handleNextClick = async () => {
-    this.setState({ page: this.state.page + 1 });
-    this.updateNews();
-  }
+  // handleNextClick = async () => {
+  //   this.setState({ page: this.state.page + 1 });
+  //   this.updateNews();
+  // }
 
   fetchMoreData = async () => {
-    this.setState({ page : this.state.page + 1 });
     let url = null ;
     if (this.props.type !== " ") {
-      url = `https://newsapi.org/v2/everything?q=${this.props.type}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      url = `https://newsapi.org/v2/everything?q=${this.props.type}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     } else {
-      url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     }
+    this.setState({ page : this.state.page + 1 });
     // this.setState({ loading: true });
     let data = await fetch(url);
     let parseData = await data.json();
@@ -122,7 +122,7 @@ export class News extends Component {
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
-          hasMore={this.state.articles.length <= this.state.totalResults}
+          hasMore={this.state.articles.length < this.state.totalResults}
           loader={<Spinner/>}
         >
         <div className="container my-3">
@@ -149,6 +149,11 @@ export class News extends Component {
           </div>
         </div>
         </InfiniteScroll>
+        <span>
+            {" "}
+            {this.state.page} /{" "}
+            {Math.ceil(this.state.totalResults / this.props.pageSize)}{" "}
+          </span>
         {/* <div className="container my-2 d-flex justify-content-between"> */}
           {/* <button
             disabled={this.state.page <= 1}
