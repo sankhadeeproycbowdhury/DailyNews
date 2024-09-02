@@ -18,7 +18,7 @@ export class NavBar extends Component {
         <nav className="navbar navbar-expand-lg  bg-dark navbar-dark fixed-top">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
-              DailyNews
+               InviSecure
             </Link>
             <button
               className="navbar-toggler"
@@ -42,74 +42,31 @@ export class NavBar extends Component {
                     aria-current="page"
                     to="/general"
                   >
-                    General
+                    DashBoard
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/business"
+                    to="/about"
                   >
-                    Business
+                    About
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/entertainment"
+                    to="/future"
                   >
-                    Entertainment
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/health"
-                  >
-                    Health
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/science"
-                  >
-                    Science
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/sports"
-                  >
-                    Sports
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/technology"
-                  >
-                    Technology
+                    Future Aspect
                   </Link>
                 </li>
               </ul>
               <div className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  onChange={this.handleChange}
-                  placeholder="Search"
-                  aria-label="Search"
-                  value={this.props.value}
-                />
-                <Link className="btn btn-outline-info" to="/search" >
-                  Search
+                <Link className="btn btn-outline-info" to="/logout" >
+                  LogOut
                 </Link>
               </div>
             </div>

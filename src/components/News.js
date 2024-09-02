@@ -38,7 +38,7 @@ export class News extends Component {
     };
     document.title = `${this.capitalizeFirstLetter(
       this.props.category
-    )} - DailyNews App`;
+    )} - InviSecure App`;
   }
 
   async updateNews() {
@@ -66,15 +66,6 @@ export class News extends Component {
     this.updateNews();
   }
 
-  // handlePrevClick = async () => {
-  //   this.setState({ page: this.state.page - 1 });
-  //   this.updateNews();
-  // }
-
-  // handleNextClick = async () => {
-  //   this.setState({ page: this.state.page + 1 });
-  //   this.updateNews();
-  // }
 
   fetchMoreData = async () => {
     let url = null ;
@@ -84,13 +75,13 @@ export class News extends Component {
       url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     }
     this.setState({ page : this.state.page + 1 });
-    // this.setState({ loading: true });
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parseData = await data.json();
     this.setState({
       articles: this.state.articles.concat(parseData.articles),
       totalResults: parseData.totalResults,
-      // loading: false,
+      loading: false,
     });
   }
   
@@ -104,7 +95,7 @@ export class News extends Component {
           HeadLines
         </h1>
           <div className="row">
-            <p style={{ textAlign: "center" }}>No Item to Show</p>
+            <p style={{ textAlign: "center", color:"white" }}>No Item to Show</p>
           </div>
         </div>
       )
@@ -112,12 +103,9 @@ export class News extends Component {
 
     return (
       <>
-        <h1 style={{ textAlign: "center", margin: "30px", padding: "30px" }}>
-          DailyNews - Top {this.capitalizeFirstLetter(this.props.category)}{" "}
-          HeadLines
+        <h1 style={{ textAlign: "center", marginTop: "30px", paddingTop: "30px",  color:"white" }}>
+        InviSecure - DashBoard
         </h1>
-
-        {/* {this.state.loading && <Spinner/>} */}
 
         <InfiniteScroll
           dataLength={this.state.articles.length}
@@ -125,11 +113,11 @@ export class News extends Component {
           hasMore={this.state.articles.length < this.state.totalResults}
           loader={<Spinner/>}
         >
-        <div className="container my-3">
+        <div className="container">
           <div className="row">
             {this.state.articles.map((element) => {
                 return (
-                  <div className="col-md-4" key={element.url}>
+                  <div className="col-md-6" key={element.url}>
                     <NewsItem
                       title={element.title ? element.title.slice(0, 45) : ""}
                       description={
@@ -154,32 +142,6 @@ export class News extends Component {
             {this.state.page} /{" "}
             {Math.ceil(this.state.totalResults / this.props.pageSize)}{" "}
           </span>
-        {/* <div className="container my-2 d-flex justify-content-between"> */}
-          {/* <button
-            disabled={this.state.page <= 1}
-            type="button"
-            className="btn btn-info mx-2"
-            onClick={this.handlePrevClick}
-          >
-            &larr; Previous
-          </button> */}
-          {/* <span>
-            {" "}
-            {this.state.page} /{" "}
-            {Math.ceil(this.state.totalResults / this.props.pageSize)}{" "}
-          </span> */}
-          {/* <button
-            disabled={
-              this.state.page + 1 >
-              Math.ceil(this.state.totalResults / this.props.pageSize)
-            }
-            type="button"
-            className="btn btn-info mx-2"
-            onClick={this.handleNextClick}
-          >
-            Next &rarr;
-          </button> */}
-        {/* s */}
       </>
     );
   }
