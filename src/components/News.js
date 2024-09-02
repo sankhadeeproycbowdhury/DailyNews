@@ -119,17 +119,13 @@ export class News extends Component {
                 return (
                   <div className="col-md-6" key={element.url}>
                     <NewsItem
-                      title={element.title ? element.title.slice(0, 45) : ""}
-                      description={
-                        element.description
-                          ? element.description.slice(0, 90)
-                          : ""
-                      }
-                      imageUrl={element.urlToImage}
-                      newsUrl={element.url}
-                      author={element.author}
-                      date={element.publishedAt}
-                      source={element.source.name}
+                    source_mac={"7af74ddfb5b9"}
+                    destination_mac = {"3003c8692261"}
+                    source_ip = {"192.168.1.7"}
+                    destination_ip={" 224.0.0.251"}
+                    source_port={5353}
+                    destination_port={5353}
+                    application={"Brave"}
                     />
                   </div>
                 );

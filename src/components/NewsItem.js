@@ -17,7 +17,7 @@ export class NewsItem extends Component {
         </div>
           <div className="card-body">
             <h5 className="card-title">
-              SourceIP : {source_ip}  DestinationIP : {destination_ip}
+            <span style={{marginRight: "15px"}}>SourceIP: {source_ip}</span> <span>DestinationIP: {destination_ip}</span>
             </h5>
             <p className="card-text">SourceMAC : {source_mac}</p>
             <p className="card-text">DestinationMAC : {destination_mac}</p>
