@@ -49,6 +49,15 @@ export class NavBar extends Component {
                   <Link
                     className="nav-link active"
                     aria-current="page"
+                    to="/form"
+                  >
+                    Request
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
                     to="/about"
                   >
                     About

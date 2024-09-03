@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import About from './components/About';
 import Future from './components/Future';
+import Form from './components/Form';
 
 export default class App extends Component {
   constructor() {
@@ -39,7 +40,8 @@ export default class App extends Component {
           <Routes>
           <Route exact path="/" element={<News  setProgress = {this.setProgress} apiKey = {this.apiKey}  pageSize = {this.pageSize} key="home" />} /> 
           <Route exact path="/about" element={<About pageSize={3} category = "About" />} /> 
-          <Route exact path="/future" element={<Future pageSize={3} category = "Future"/> } /> 
+          <Route exact path="/future" element={<Future pageSize={3} category = "Future"/> } />
+          <Route exact path="/form" element={<Form/> } /> 
           <Route exact path="/general" element={<News  setProgress = {this.setProgress} apiKey = {this.apiKey}  pageSize = {this.pageSize} category = "general" key="general"/>} />
           </Routes>
         </Router>

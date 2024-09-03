@@ -3,6 +3,14 @@ import React, { Component } from "react";
 export class NewsItem extends Component {
   render() {
     let { source_mac, destination_mac, source_ip, destination_ip, source_port, destination_port, application } = this.props;
+    const handleBlock = (e)=>{
+      e.preventDefault();
+      alert("Application Blocked");
+    }
+    const handleUnblock = (e)=>{
+      e.preventDefault();
+      alert("Application unblocked");
+    }
 
     return (
       <div className="container my-3">
@@ -33,6 +41,7 @@ export class NewsItem extends Component {
               rel="noreferrer"
               target="_blank"
               className="btn btn-sm btn-info mx-2"
+              onClick={handleBlock}
             >
               Block
             </button>
@@ -40,6 +49,7 @@ export class NewsItem extends Component {
               rel="noreferrer"
               target="_blank"
               className="btn btn-sm btn-info mx-2"
+              onClick={handleUnblock}
             >
               Unblock
             </button>
